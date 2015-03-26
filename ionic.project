@@ -1,5 +1,5 @@
 {
   "name": "sf-hackathon",
   "app_id": "",
-  "gulpStartupTasks": ["watch"]
+  "gulpStartupTasks": ["default","watch"]
 }
