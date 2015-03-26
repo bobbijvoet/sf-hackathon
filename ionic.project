@@ -1,0 +1,5 @@
+{
+  "name": "sf-hackathon",
+  "app_id": "",
+  "gulpStartupTasks": ["watch"]
+}
