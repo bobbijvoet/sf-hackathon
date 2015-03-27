@@ -1,9 +1,11 @@
 class AddMarkerCtrl {
-  constructor (MapService) {
+  constructor (MapService, $state) {
     this.name = '';
     this.details = '';
     this.latLng = '';
     this.MapService = MapService;
+    this.$state = $state;
+
 
   }
 
@@ -13,11 +15,14 @@ class AddMarkerCtrl {
 
 
   addMarker(){
-    this.MapService.addMarker()
+    this.MapService.addMarker().then(()=>{
+      this.$state.go('tab.map', {}, {reload:true, cache:false});
+
+    })
   }
 }
 
-AddMarkerCtrl.$inject = ['MapService'];
+AddMarkerCtrl.$inject = ['MapService', '$state'];
 
 
 export default AddMarkerCtrl;
