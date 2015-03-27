@@ -3,19 +3,10 @@ class AddMarkerCtrl {
     this.name = '';
     this.details = '';
     this.latLng = '';
-
+	this.getMarkers();
   }
 
-
-
-
-
-  post(){
-
+  getMarkers(data){
+	console.log(data)
   }
-
-  
-
-
-
 }
