@@ -1,7 +1,6 @@
 import MapCtrl from './modules/map/MapCtrl';
 import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
-import FirebaseService from './modules/firebase/FirebaseService';
-
+import AccountCtrl from './modules/account/AccountCtrl';
 
 
 angular.module('starter', ['ionic'])
@@ -17,10 +16,10 @@ angular.module('starter', ['ionic'])
             StatusBar.styleDefault();
         }
     });
-})
-.service('FirebaseService', FirebaseService)
-    .controller('MapCtrl', MapCtrl)
-    .controller('LeaderBoardCtrl', LeaderBoardCtrl)
+  })
+  .controller('MapCtrl', MapCtrl)
+  .controller('LeaderBoardCtrl', LeaderBoardCtrl)
+  .controller('AccountCtrl', AccountCtrl)
 
 
     .config(function($stateProvider, $urlRouterProvider) {
@@ -49,14 +48,24 @@ angular.module('starter', ['ionic'])
         }
       })
 
-            .state('tab.map', {
-                url: '/map',
-                views: {
-                    'tab-map': {
-                        templateUrl: 'templates/tab-map.html'
-                    }
-                }
-            })
+      .state('tab.chats', {
+        url: '/chats',
+        views: {
+          'tab-chats': {
+            templateUrl: 'templates/tab-chats.html',
+            controller: 'LeaderBoardCtrl'
+          }
+        }
+      })
+      .state('tab.chat-detail', {
+        url: '/chats/:chatId',
+        views: {
+          'tab-chats': {
+            templateUrl: 'templates/chat-detail.html',
+            controller: 'ChatDetailCtrl'
+          }
+        }
+      })
 
             .state('tab.chats', {
                 url: '/chats',
