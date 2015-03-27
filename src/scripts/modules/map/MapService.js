@@ -7,17 +7,11 @@ class MapService {
 
     var marker = FirebaseService.getMarkers();
 
-    this.allMarkers = [];
-
-    marker.then((data)=>{
-      this.allMarkers = data;
-
-
-    });
     this.map = L.map('map', {
       center: [52.0306659, 5.1627295],
       zoom: 3
     });
+
 
     L.tileLayer('http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/maptile/{mapID}/normal.day.grey.mobile/{z}/{x}/{y}/256/png8?app_id={app_id}&app_code={app_code}', {
     	attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
@@ -65,10 +59,11 @@ class MapService {
   }
 
   addMarker (){
-    this.FirebaseService.setMarker( {
+    console.log(this.map.getCenter());
+    return  this.FirebaseService.setMarker( {
           id: 123,
-          "lat" : 55,
-          "long" : 54,
+          "lat" : this.map.getCenter().lat,
+          "long" : this.map.getCenter().lng,
           "points" : 10,
           "quest" : "Doe dit of dat",
           "details" : "These are details",
