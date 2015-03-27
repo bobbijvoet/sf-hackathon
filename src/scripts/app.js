@@ -83,17 +83,17 @@ angular.module('starter', ['ionic', 'firebase'])
                   controller: 'MarkerCtrl as vm'
                 }
               }
-            })
-
-	        .state('tab.addmarker', {
-		        url: '/addmarker',
-		        views: {
-			        'tab-account': {
-				        templateUrl: 'templates/tab-addmarker.html',
-				        controller: 'AddMarkerCtrl as vm'
-			        }
-		        }
-	        });
+            });
+	        //
+	        //.state('tab.addmarker', {
+		     //   url: '/addmarker',
+		     //   views: {
+			 //       'tab-account': {
+				//        templateUrl: 'templates/tab-addmarker.html',
+				//        controller: 'AddMarkerCtrl as vm'
+			 //       }
+		     //   }
+	        //});
 
 
         // if none of the above states are matched, use this as the fallback

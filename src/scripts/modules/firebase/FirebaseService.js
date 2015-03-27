@@ -2,7 +2,7 @@
 
 class FirebaseService
 {
-	constructor($firebaseArray)
+	constructor($firebaseArray, UserService)
 	{
 		let baseUrl = 'https://winningfrontmen.firebaseio.com/';
 		this.playersService = $firebaseArray(new Firebase(baseUrl + 'users'));
