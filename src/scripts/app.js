@@ -1,6 +1,7 @@
 import MapCtrl from './modules/map/MapCtrl';
 import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
+import FirebaseService from './modules/firebase/FirebaseService';
 
 
 angular.module('starter', ['ionic'])
@@ -17,6 +18,7 @@ angular.module('starter', ['ionic'])
         }
     });
   })
+  .service('FirebaseService', FirebaseService)
   .controller('MapCtrl', MapCtrl)
   .controller('LeaderBoardCtrl', LeaderBoardCtrl)
   .controller('AccountCtrl', AccountCtrl)
@@ -48,11 +50,11 @@ angular.module('starter', ['ionic'])
         }
       })
 
-      .state('tab.chats', {
-        url: '/chats',
+      .state('tab.leaderboard', {
+        url: '/leaderboard',
         views: {
           'tab-chats': {
-            templateUrl: 'templates/tab-chats.html',
+            templateUrl: 'templates/tab-leaderboard.html',
             controller: 'LeaderBoardCtrl'
           }
         }
@@ -67,24 +69,24 @@ angular.module('starter', ['ionic'])
         }
       })
 
-            .state('tab.chats', {
-                url: '/chats',
-                views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/tab-chats.html',
-                        controller: 'ChatsCtrl'
-                    }
-                }
-            })
-            .state('tab.chat-detail', {
-                url: '/chats/:chatId',
-                views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/chat-detail.html',
-                        controller: 'ChatDetailCtrl'
-                    }
-                }
-            })
+            //.state('tab.chats', {
+            //    url: '/chats',
+            //    views: {
+            //        'tab-chats': {
+            //            templateUrl: 'templates/tab-chats.html',
+            //            controller: 'ChatsCtrl'
+            //        }
+            //    }
+            //})
+            //.state('tab.chat-detail', {
+            //    url: '/chats/:chatId',
+            //    views: {
+            //        'tab-chats': {
+            //            templateUrl: 'templates/chat-detail.html',
+            //            controller: 'ChatDetailCtrl'
+            //        }
+            //    }
+            //})
 
             .state('tab.account', {
                 url: '/account',
@@ -94,17 +96,8 @@ angular.module('starter', ['ionic'])
                         controller: 'AccountCtrl'
                     }
                 }
-            })
-
-            .state('tab.firebase', {
-                url: '/firebase',
-                views: {
-                    'tab-leaderboard': {
-                        templateUrl: 'templates/tab-leaderboard.html',
-                        controller: 'LeaderBoardCtrl'
-                    }
-                }
             });
+
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/map');
