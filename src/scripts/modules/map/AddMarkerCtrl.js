@@ -1,12 +1,14 @@
 class AddMarkerCtrl {
-  constructor (){
+  constructor () {
     this.name = '';
     this.details = '';
     this.latLng = '';
-	this.getMarkers();
+
   }
 
   getMarkers(data){
 	console.log(data)
   }
 }
+
+export default AddMarkerCtrl;
