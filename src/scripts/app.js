@@ -10,44 +10,44 @@ import UserService from './modules/firebase/UserService';
 import LoginCtrl from './modules/login/LoginCtrl';
 
 angular.module('starter', ['ionic', 'firebase'])
-  .run(function ($rootScope, $location) {
-    $rootScope.$on('$locationChangeStart', function () {
-      console.log('$locationChangeStart : ', $location.url());
-      // set the startupUrl
-      if (!$rootScope.startupInitiated) {
-        $rootScope.startupInitiated = true;
-        if ($location.url() !== '/tab/login') {
-          $location.url('/tab/login');
-        }
-      }
-    });
-    $rootScope.$on('$locationChangeSuccess', function () {
-      console.log('$locationChangeSuccess : ', $location.url());
-    });
-  }, ($ionicPlatform) => {
-    $ionicPlatform.ready(function () {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      if (window.cordova && window.cordova.plugins.Keyboard) {
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      }
-      if (window.StatusBar) {
-        // org.apache.cordova.statusbar required
-        StatusBar.styleDefault();
-      }
-    });
-  })
 
-  .service('FirebaseService', FirebaseService)
-  .service('MapService', MapService)
-  .service('UserService', UserService)
-  .controller('MapCtrl', MapCtrl)
-  .controller('AdminMapCtrl', AdminMapCtrl)
-  .controller('LeaderBoardCtrl', LeaderBoardCtrl)
-  .controller('AccountCtrl', AccountCtrl)
-  .controller('MarkerCtrl', MarkerCtrl)
-  .controller('AddMarkerCtrl', AddMarkerCtrl)
-  .controller('LoginCtrl', LoginCtrl)
+	.service('FirebaseService', FirebaseService)
+	.service('MapService', MapService)
+	.service('UserService', UserService)
+	.controller('MapCtrl', MapCtrl)
+	.controller('AdminMapCtrl', AdminMapCtrl)
+	.controller('LeaderBoardCtrl', LeaderBoardCtrl)
+	.controller('AccountCtrl', AccountCtrl)
+	.controller('MarkerCtrl', MarkerCtrl)
+	.controller('AddMarkerCtrl', AddMarkerCtrl)
+	.controller('LoginCtrl', LoginCtrl)
+
+	.run(function($rootScope, $location, UserService) {
+		$rootScope.$on('$locationChangeStart', function () {
+			//console.log('$locationChangeStart : ', $location.url(), UserService.get());
+			// set the startupUrl
+			if (!UserService.get()) {
+				if($location.url() !== '/tab/login') {
+					$location.url('/tab/login');
+				}
+			}
+		});
+		$rootScope.$on('$locationChangeSuccess', function () {
+			//console.log('$locationChangeSuccess : ', $location.url());
+		});
+	}, ($ionicPlatform) => {
+		$ionicPlatform.ready(function () {
+			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+			// for form inputs)
+			if (window.cordova && window.cordova.plugins.Keyboard) {
+				cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			}
+			if (window.StatusBar) {
+				// org.apache.cordova.statusbar required
+				StatusBar.styleDefault();
+			}
+		});
+	})
 
   .config(function ($stateProvider, $urlRouterProvider) {
 

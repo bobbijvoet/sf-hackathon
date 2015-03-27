@@ -30,7 +30,7 @@ class FirebaseService
 		return this.markersService.$loaded();
 	}
 
-	setMarkers(marker)
+	setMarker(marker)
 	{
 		if(marker) {
 			return this.markersService.$add(data);
