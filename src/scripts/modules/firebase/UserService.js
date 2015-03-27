@@ -4,7 +4,15 @@ class UserService
 {
 	constructor()
 	{
-		this.id = 12345;
+		this.id = null; // 1 is admin, 2 is user
+	}
+
+	set(id)
+	{
+		if(!id) {
+			return {error: 'invalid params'};
+		}
+		this.id = id;
 	}
 
 	get()

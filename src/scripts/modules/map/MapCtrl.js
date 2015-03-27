@@ -13,8 +13,6 @@ class MapCtrl {
           this.$state.go('tab.marker', {id: event.target.options.id})
         })
     )
-
-
   }
 }
 

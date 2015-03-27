@@ -10,6 +10,10 @@ class FirebaseService
 		this.checkinService = $firebaseArray(new Firebase(baseUrl + 'checkin'));
 	}
 
+	getId(marker) {
+		return this.markersService.$keyAt(marker);
+	}
+
 	getPlayers(id)
 	{
 		if(id) {
@@ -26,24 +30,23 @@ class FirebaseService
 		return this.markersService.$loaded();
 	}
 
-	setMarkers(data)
+	setMarkers(marker)
 	{
-		if(data) {
+		if(marker) {
 			return this.markersService.$add(data);
 		}
 		return {error: 'no data'};
 	}
 
-	checkIn(marker, base64)
+	checkIn(markerId, base64)
 	{
-		var userId, markerId, data;
+		var userId, data;
 
-		if(!marker || !base64) {
+		if(!markerId || !base64) {
 			return {error: 'invalid params'};
 		}
 
 		userId  = UserService.get();
-		markerId = this.markersService.$keyAt(marker);
 		data = {
 			userId:userId,
 			markerId:markerId,
@@ -57,6 +60,6 @@ class FirebaseService
 	}
 }
 
-FirebaseService.$inject = ['$firebaseObject', '$firebaseArray'];
+FirebaseService.$inject = ['$firebaseObject', '$firebaseArray', 'UserService'];
 
 export default FirebaseService;
