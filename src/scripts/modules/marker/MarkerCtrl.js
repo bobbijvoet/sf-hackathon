@@ -12,6 +12,9 @@ class MarkerCtrl {
     this.dest = {lat:this.marker.lat, lng:this.marker.long};
     this.dep = {lat:MapService.myLocation.lat, lng:MapService.myLocation.lng};
 
+    this.images = [];
+    let self = this;
+
     let inputElement = document.querySelector('[fileupload] input');
 
 
