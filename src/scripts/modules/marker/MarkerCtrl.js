@@ -6,18 +6,8 @@ function loadImageFileAsURL()
 class MarkerCtrl {
   constructor($stateParams, FirebaseService, MapService) {
     var marker = FirebaseService.getMarkers($stateParams.id);
-    var marker = [ {
-      id: 123,
-      "lat" : 55,
-      "long" : 54,
-      "points" : 10,
-      "quest" : "Doe dit of dat",
-      "details" : "These are details",
-      "title" : "Amsterdam"
-    } ];
 
-
-    this.marker = marker[0];
+    this.marker = marker;
     this.distance = MapService.getDistance({lat: this.marker.lat, lng: this.marker.long});
 
     let inputElement = document.querySelector('[fileupload] input');
