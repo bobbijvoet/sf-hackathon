@@ -1,13 +1,13 @@
 /**
  * Created by bob on 27-3-15.
  */
-export default class MapCtrl {
+class MapCtrl {
   constructor (){
-    console.log("YES");
   }
 
-  getMarkers (){
+  static getMarkers (){
 
+    console.log("YES");
 
   }
 
@@ -16,3 +16,5 @@ export default class MapCtrl {
 
   }
 }
+
+export default MapCtrl;

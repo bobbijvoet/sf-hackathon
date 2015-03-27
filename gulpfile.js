@@ -14,6 +14,7 @@ gulp.task('default', function () {
 gulp.task('watch', function () {
 
     gulp.watch('src/scss/**/*.scss', ['css']);
+    gulp.watch('src/scripts/**/*.js', ['js']);
 
     gulp.src('www/index.html')
         .pipe($.watch('www/index.html'));

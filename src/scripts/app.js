@@ -15,6 +15,7 @@ angular.module('starter', ['ionic'])
       }
     });
   })
+  .controller('MapCtrl', MapCtrl)
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -27,7 +28,7 @@ angular.module('starter', ['ionic'])
 
       // setup an abstract state for the tabs directive
       .state('tab', {
-        url: "/",
+        url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
       })
@@ -38,8 +39,7 @@ angular.module('starter', ['ionic'])
         url: '/map',
         views: {
           'tab-map': {
-            templateUrl: 'templates/tab-map.html',
-            controller: 'MapCtrl'
+            templateUrl: 'templates/tab-map.html'
           }
         }
       })
@@ -87,8 +87,6 @@ angular.module('starter', ['ionic'])
     $urlRouterProvider.otherwise('/tab/map');
 
   });
-
-angular.module('starter').controller('MapCtrl', MapCtrl);
 
 
 //angular.module('starter').service('ExampleService', ExampleService);
