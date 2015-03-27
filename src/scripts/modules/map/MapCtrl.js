@@ -9,15 +9,19 @@ class MapCtrl {
 
     this.admin = UserService.role() === 'ADMIN';
 
-    MapService.markers().forEach((item)=>
+    MapService.markers().then((data)=> {
+
+      data.forEach((item)=> {
         item.on('click', (event) => {
-          console.log(MapService.getDistance());
           this.$state.go('tab.marker', {id: event.target.options.id})
         })
-    )
+      })
+
+
+    })
   }
 }
 
-MapCtrl.$inject = ['MapService', 'UserService','$state'];
+MapCtrl.$inject = ['MapService', 'UserService', '$state'];
 
 export default MapCtrl;

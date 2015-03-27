@@ -1,11 +1,19 @@
 'use strict';
 
 class MapService {
-  constructor(FirebaseService) {
+  constructor(FirebaseService, $q) {
     this.FirebaseService = FirebaseService;
+    this.$q = $q;
 
-    var marker = FirebaseService.getMarkers($stateParams.id);
+    var marker = FirebaseService.getMarkers();
 
+    this.allMarkers = [];
+
+    marker.then((data)=>{
+      this.allMarkers = data;
+
+
+    });
     this.map = L.map('map', {
       center: [52.0306659, 5.1627295],
       zoom: 3
@@ -41,7 +49,19 @@ class MapService {
   }
 
   markers() {
-    return [this.marker];
+    var deferred = this.$q.defer();
+
+    this.FirebaseService.getMarkers().then((data)=>{
+      let markers = data.map((item)=> {
+        let marker =L.marker([item.lat, item.long], {id: item.$id});
+        marker.addTo(this.map);
+        return marker;
+
+      });
+      deferred.resolve(markers);
+    });
+
+    return deferred.promise;
   }
 
   addMarker (){
@@ -59,6 +79,6 @@ class MapService {
   }
 }
 
-MapService.$inject = ['FirebaseService'];
+MapService.$inject = ['FirebaseService', '$q'];
 
 export default MapService;
