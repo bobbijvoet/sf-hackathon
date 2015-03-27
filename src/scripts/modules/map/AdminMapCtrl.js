@@ -2,8 +2,8 @@ import MapCtrl from './../map/MapCtrl';
 
 
 class AdminMapCtrl extends MapCtrl {
-  constructor(MapService, $state) {
-    super(MapService, $state);
+  constructor(MapService, UserService, $state) {
+    super(MapService, UserService, $state);
   }
 
   showCrosshair() {
@@ -11,11 +11,11 @@ class AdminMapCtrl extends MapCtrl {
   }
 
   openAddMarkerView() {
-    this.$state.go('marker/add')
+    this.$state.go('tab.addMarker')
   }
 
 
 }
-AdminMapCtrl.$inject = ['MapService', '$state'];
+AdminMapCtrl.$inject = ['MapService', 'UserService','$state'];
 
 export default AdminMapCtrl;

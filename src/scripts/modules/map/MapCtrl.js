@@ -3,9 +3,12 @@
  */
 class MapCtrl {
 
-  constructor(MapService, $state) {
+  constructor(MapService, UserService, $state) {
 
     this.$state = $state;
+
+    console.log(UserService);
+    this.admin = UserService.role() === 'ADMIN';
 
     MapService.markers().forEach((item)=>
         item.on('click', (event) => {
@@ -16,6 +19,6 @@ class MapCtrl {
   }
 }
 
-MapCtrl.$inject = ['MapService', '$state'];
+MapCtrl.$inject = ['MapService', 'UserService','$state'];
 
 export default MapCtrl;

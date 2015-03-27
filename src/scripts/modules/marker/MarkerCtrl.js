@@ -16,8 +16,9 @@ class MarkerCtrl {
       "title" : "Amsterdam"
     } ];
 
-    this.distance = MapService.getDistance({lat: marker.lat, lng: marker.long});
+
     this.marker = marker[0];
+    this.distance = MapService.getDistance({lat: this.marker.lat, lng: this.marker.long});
 
     let inputElement = document.querySelector('[fileupload] input');
 
