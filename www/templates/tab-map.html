@@ -1,6 +1,18 @@
 <ion-view view-title="Map">
-  <ion-content class="padding">
-    <div id="map">
-    </div>
-  </ion-content>
+	<ion-content class="padding">
+		<div id="map">
+		</div>
+
+		<div class="map_bottom-actions">
+			<button class="button button-positive" ng-click="vm.showCrosshair()" ng-if="!vm.crosshair">
+				Marker toevoegen
+			</button>
+			<button class="button button-balanced" ng-click="vm.openAddMarkerView()"  ng-if="vm.crosshair">
+				Plaatsen
+			</button>
+
+		</div>
+		<div class="map_crosshair" ng-if="vm.crosshair">
+		</div>
+	</ion-content>
 </ion-view>
