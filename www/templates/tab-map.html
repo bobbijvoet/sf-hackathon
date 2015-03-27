@@ -3,7 +3,7 @@
 		<div id="map">
 		</div>
 
-		<div class="map_bottom-actions">
+		<div class="map_bottom-actions" ng-if="vm.admin">
 			<button class="button button-positive" ng-click="vm.showCrosshair()" ng-if="!vm.crosshair">
 				Marker toevoegen
 			</button>
