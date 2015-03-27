@@ -1,5 +1,6 @@
 import MapCtrl from './modules/map/MapCtrl';
-
+import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
+import AccountCtrl from './modules/account/AccountCtrl';
 
 
 angular.module('starter', ['ionic'])
@@ -18,6 +19,8 @@ angular.module('starter', ['ionic'])
     });
   })
   .controller('MapCtrl', MapCtrl)
+  .controller('LeaderBoardCtrl', LeaderBoardCtrl)
+  .controller('AccountCtrl', AccountCtrl)
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -52,7 +55,7 @@ angular.module('starter', ['ionic'])
         views: {
           'tab-chats': {
             templateUrl: 'templates/tab-chats.html',
-            controller: 'ChatsCtrl'
+            controller: 'LeaderBoardCtrl'
           }
         }
       })
