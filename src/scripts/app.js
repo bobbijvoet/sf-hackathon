@@ -3,6 +3,7 @@ import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
 import MarkerCtrl from './modules/marker/MarkerCtrl';
+import AddMarkerCtrl from './modules/map/AddMarkerCtrl';
 
 angular.module('starter', ['ionic', 'firebase'])
     .run(($ionicPlatform) => {
@@ -23,6 +24,7 @@ angular.module('starter', ['ionic', 'firebase'])
   .controller('LeaderBoardCtrl', LeaderBoardCtrl)
   .controller('AccountCtrl', AccountCtrl)
   .controller('MarkerCtrl', MarkerCtrl)
+  .controller('AddMarkerCtrl', AddMarkerCtrl)
 
 
     .config(function($stateProvider, $urlRouterProvider) {
@@ -70,6 +72,7 @@ angular.module('starter', ['ionic', 'firebase'])
                     }
                 }
             })
+
             .state('tab.marker', {
               url: '/marker/:id',
               views: {
@@ -78,7 +81,17 @@ angular.module('starter', ['ionic', 'firebase'])
                   controller: 'MarkerCtrl as vm'
                 }
               }
-            });
+            })
+
+	        .state('tab.addmarker', {
+		        url: '/addmarker',
+		        views: {
+			        'tab-account': {
+				        templateUrl: 'templates/tab-addmarker.html',
+				        controller: 'AddMarkerCtrl as vm'
+			        }
+		        }
+	        });
 
 
         // if none of the above states are matched, use this as the fallback

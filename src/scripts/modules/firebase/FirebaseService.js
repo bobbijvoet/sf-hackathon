@@ -34,8 +34,22 @@ class FirebaseService
 		return {error: 'no data'};
 	}
 
-	checkIn(data)
+	checkIn(marker, base64)
 	{
+		var userId, markerId, data;
+
+		if(!marker || !base64) {
+			return {error: 'invalid params'};
+		}
+
+		userId  = UserService.get();
+		markerId = this.markersService.$keyAt(marker);
+		data = {
+			userId:userId,
+			markerId:markerId,
+			picture:base64
+		};
+
 		if(data) {
 			return this.checkinService.$add(data);
 		}
