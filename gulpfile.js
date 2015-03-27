@@ -38,7 +38,7 @@ gulp.task('css', function () {
             // require('csswring')
         ];
 
-    return gulp.src('app/scss/styles.scss')
+    return gulp.src('./src/scss/**/*.scss')
         .pipe($.sourcemaps.init())
         .pipe($.sass({
             errLogToConsole: true,
@@ -51,7 +51,7 @@ gulp.task('css', function () {
         .pipe($.size({
             showFiles: true
         }))
-        .pipe(gulp.dest('build/css'));
+        .pipe(gulp.dest('www/css'));
 });
 
 function es6ToEs5(fileName, outputName) {

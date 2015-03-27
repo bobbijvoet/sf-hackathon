@@ -1,15 +1,20 @@
-/**
- * Created by bob on 27-3-15.
- */
-class LeaderBoardCtrl {
-  controller() {
-    console.log('x');
-  }
+'use strict';
 
-  getPlayers(){
+class LeaderBoardCtrl
+{
 
-  }
+    constructor(FirebaseService)
+    {
+        this.FirebaseService = FirebaseService;
+    }
+
+    getPlayers() {
+
+        return this.FirebaseService.getPlayers();
+    }
 
 }
+
+LeaderBoardCtrl.$inject = ['FirebaseService'];
 
 export default LeaderBoardCtrl;
