@@ -1,57 +1,88 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var bower = require('bower');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var babel = require('babelify');
-
-var sourcemaps = require('gulp-sourcemaps');
-
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
-var source = require('vinyl-buffer');
-var buffer = require('vinyl-source-stream');
+var to5ify = require('6to5ify');
+var $ = require('gulp-load-plugins')();
+var connect = require('gulp-connect');
 
-
-var paths = {
-  styles: ['./src/scss/**/*.scss'],
-  scripts: ['./src/scripts/**/*.js']
-};
-
-gulp.task('default', ['sass', 'scripts']);
-
-gulp.task('sass', function (done) {
-  gulp.src(paths.styles)
-    .pipe(sass())
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({extname: '.min.css'}))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+gulp.task('default', function () {
+    gulp.start('js', 'css', 'watch');
 });
 
+gulp.task('watch', ['webserver'], function () {
+    $.livereload.listen();
 
-gulp.task('scripts', function () {
+    gulp.watch('app/scss/**/*.scss', ['css']);
+    gulp.watch('app/js/**/*.js', ['js']);
+    gulp.watch('app/js/**/*.js', ['js']);
 
-  browserify('./test.js', {debug: true, verbose: true}).transform(babel).
-  bundle()
-    .on('error', function (err) {
-      console.error(err);
-      this.emit('end');
+    gulp.src('index.html')
+        .pipe($.watch('index.html'))
+        .pipe($.livereload());
+});
+
+gulp.task('webserver', function () {
+    connect.server({
+        host: 'localhost',
+        port: 9000,
+        livereload: true
+    });
+});
+
+gulp.task('js', function () {
+    es6ToEs5('./src/scripts/app.js', 'bundle.js');
+});
+
+gulp.task('css', function () {
+    'use strict';
+    var cssFilter = $.filter(['*.css']);
+    var processors = [
+            require('postcss-assets')({
+            loadPath: './app/img'
+        }),
+            require('autoprefixer-core')({
+            browsers: ['last 2 versions', 'IE 10']
+        }),
+            require('css-mqpacker')
+            // require('csswring')
+        ];
+
+    return gulp.src('app/scss/styles.scss')
+        .pipe($.sourcemaps.init())
+        .pipe($.sass({
+            errLogToConsole: true,
+            includePaths: ['bower_components']
+        }))
+        .pipe($.postcss(processors))
+        .pipe($.sourcemaps.write('.'))
+        .pipe(cssFilter)
+        .pipe(cssFilter.restore())
+        .pipe($.size({
+            showFiles: true
+        }))
+        .pipe(gulp.dest('build/css'))
+        .pipe($.livereload());
+});
+
+function es6ToEs5(fileName, outputName) {
+    "use strict";
+
+    browserify(fileName, {
+        debug: true
     })
-    .pipe(source('build.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./build'));
+        .transform(to5ify)
+        .bundle()
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .pipe(source(outputName))
+        .pipe(buffer())
+        .pipe($.sourcemaps.init({
+            loadMaps: true
+        })) // loads map from browserify file
+        //.pipe($.uglify())
+        .pipe($.sourcemaps.write('./')) // writes .map file
+        .pipe(gulp.dest('./build'))
+        .pipe($.livereload());
 
-});
-
-
-gulp.task('watch', function () {
-  gulp.watch(paths.styles, ['sass']);
-  gulp.watch(paths.scripts, ['scripts']);
-});
+}
