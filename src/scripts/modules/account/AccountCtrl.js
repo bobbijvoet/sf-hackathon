@@ -1,7 +1,7 @@
 /**
  * Created by bob on 27-3-15.
  */
-class LeaderBoardCtrl {
+class AccountCtrl {
   controller() {
     console.log('x');
   }
@@ -12,4 +12,4 @@ class LeaderBoardCtrl {
 
 }
 
-export default LeaderBoardCtrl;
+export default AccountCtrl;
