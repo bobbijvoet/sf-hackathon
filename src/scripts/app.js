@@ -10,12 +10,23 @@ import UserService from './modules/firebase/UserService';
 import LoginCtrl from './modules/login/LoginCtrl';
 
 angular.module('starter', ['ionic', 'firebase'])
-	.run(function($rootScope, $location) {
+
+	.service('FirebaseService', FirebaseService)
+	.service('MapService', MapService)
+	.service('UserService', UserService)
+	.controller('MapCtrl', MapCtrl)
+	.controller('AdminMapCtrl', AdminMapCtrl)
+	.controller('LeaderBoardCtrl', LeaderBoardCtrl)
+	.controller('AccountCtrl', AccountCtrl)
+	.controller('MarkerCtrl', MarkerCtrl)
+	.controller('AddMarkerCtrl', AddMarkerCtrl)
+	.controller('LoginCtrl', LoginCtrl)
+
+	.run(function($rootScope, $location, UserService) {
 		$rootScope.$on('$locationChangeStart', function () {
-			console.log('$locationChangeStart : ', $location.url());
+			console.log('$locationChangeStart : ', $location.url(), UserService.get());
 			// set the startupUrl
-			if (!$rootScope.startupInitiated) {
-				$rootScope.startupInitiated = true;
+			if (!UserService.get()) {
 				if($location.url() !== '/tab/login') {
 					$location.url('/tab/login');
 				}
@@ -37,17 +48,6 @@ angular.module('starter', ['ionic', 'firebase'])
 			}
 		});
 	})
-
-	.service('FirebaseService', FirebaseService)
-	.service('MapService', MapService)
-	.service('UserService', UserService)
-	.controller('MapCtrl', MapCtrl)
-	.controller('AdminMapCtrl', AdminMapCtrl)
-	.controller('LeaderBoardCtrl', LeaderBoardCtrl)
-	.controller('AccountCtrl', AccountCtrl)
-	.controller('MarkerCtrl', MarkerCtrl)
-	.controller('AddMarkerCtrl', AddMarkerCtrl)
-	.controller('LoginCtrl', LoginCtrl)
 
 	.config(function ($stateProvider, $urlRouterProvider) {
 
