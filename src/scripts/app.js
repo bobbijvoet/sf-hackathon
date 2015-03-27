@@ -1,6 +1,7 @@
 import MapCtrl from './modules/map/MapCtrl';
 import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
+import MarkerCtrl from './modules/marker/MarkerCtrl';
 
 
 angular.module('starter', ['ionic'])
@@ -21,6 +22,7 @@ angular.module('starter', ['ionic'])
   .controller('MapCtrl', MapCtrl)
   .controller('LeaderBoardCtrl', LeaderBoardCtrl)
   .controller('AccountCtrl', AccountCtrl)
+  .controller('MarkerCtrl', MarkerCtrl)
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -77,11 +79,19 @@ angular.module('starter', ['ionic'])
             controller: 'AccountCtrl'
           }
         }
+      })
+      .state('tab.marker', {
+        url: '/marker',
+        views: {
+          'tab-marker': {
+            templateUrl: 'templates/marker.html',
+            controller: 'MarkerCtrl'
+          }
+        }
       });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/map');
-
   });
 
 
