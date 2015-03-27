@@ -30,10 +30,10 @@ class MapService {
 
   }
 
-  getDistance (latLong = {lat:51.5,lng:0.09}){
+  getDistance(latLong = {lat: 51.5, lng: 0.09}) {
+     return L.latLng(latLong).distanceTo(this.myLocation);
+   }
 
-    return L.GeometryUtil.distance(this.map, this.myLocation, latLong);
-  }
 
   handleLocation (event){
     this.myLocation = event.latlng;
