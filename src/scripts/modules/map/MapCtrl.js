@@ -7,18 +7,16 @@ class MapCtrl {
 
     this.$state = $state;
 
-    console.log(UserService);
     this.admin = UserService.role() === 'ADMIN';
 
-    MapService.markers().then((data)=> {
+    console.log(this.admin);
 
+    MapService.markers().then((data)=> {
       data.forEach((item)=> {
         item.on('click', (event) => {
           this.$state.go('tab.marker', {id: event.target.options.id})
         })
       })
-
-
     })
   }
 }

@@ -5,7 +5,7 @@ import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
 import MapService from './modules/map/MapService';
 import MarkerCtrl from './modules/marker/MarkerCtrl';
-import AddMarkerCtrl from './modules/map/AddMarkerCtrl';
+import AddMarkerCtrl from './modules/marker/AddMarkerCtrl';
 import UserService from './modules/firebase/UserService';
 import LoginCtrl from './modules/login/LoginCtrl';
 
