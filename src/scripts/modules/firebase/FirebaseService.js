@@ -8,6 +8,8 @@ class FirebaseService
 		this.playersService = $firebaseArray(new Firebase(baseUrl + 'users'));
 		this.markersService = $firebaseArray(new Firebase(baseUrl + 'markers'));
 		this.checkinService = $firebaseArray(new Firebase(baseUrl + 'checkin'));
+
+    //console.log(this.playersService);
 	}
 
 	getId(marker) {
@@ -33,7 +35,7 @@ class FirebaseService
 	setMarker(marker)
 	{
 		if(marker) {
-			return this.markersService.$add(data);
+			return this.markersService.$add(marker);
 		}
 		return {error: 'no data'};
 	}
@@ -60,6 +62,6 @@ class FirebaseService
 	}
 }
 
-FirebaseService.$inject = ['$firebaseObject', '$firebaseArray', 'UserService'];
+FirebaseService.$inject = ['$firebaseArray', 'UserService'];
 
 export default FirebaseService;

@@ -4,7 +4,7 @@ class MapService {
   constructor(FirebaseService) {
     this.FirebaseService = FirebaseService;
 
-    //var marker = FirebaseService.getMarkers($stateParams.id);
+    var marker = FirebaseService.getMarkers($stateParams.id);
 
     this.map = L.map('map', {
       center: [52.0306659, 5.1627295],
@@ -45,7 +45,15 @@ class MapService {
   }
 
   addMarker (){
-    this.FirebaseService.setMarker();
+    this.FirebaseService.setMarker( {
+          id: 123,
+          "lat" : 55,
+          "long" : 54,
+          "points" : 10,
+          "quest" : "Doe dit of dat",
+          "details" : "These are details",
+          "title" : "Amsterdam"
+        });
         //var marker = FirebaseService.getMarkers($stateParams.id);
 
   }
