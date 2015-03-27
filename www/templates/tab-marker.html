@@ -1,8 +1,25 @@
 <ion-view view-title="Marker">
     <ion-content class="marker-content">
-        <div class="bar bar-header bar-calm marker-title">
-            <h1 class="title" ng-bind="vm.marker.title"></h1>
+
+        <div class="card">
+            <div class="item item-text-wrap" ng-bind-template="TITLE: {{vm.marker.title}}">
+            </div>
         </div>
+
+        <div class="card">
+            <div class="item item-text-wrap" ng-bind-template="DETAILS: {{vm.marker.details}}">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item-text-wrap" ng-bind-template="QUEST: {{vm.marker.quest}}">
+            </div>
+        </div>
+
+        <button fileupload class="file-upload">
+            <span>button-royal</span>
+            <input type="file" class="upload" />
+        </button>
     </ion-content>
 </ion-view>
 
