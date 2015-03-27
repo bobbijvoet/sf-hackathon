@@ -1,7 +1,9 @@
-<article>
-    <ul class="list">
-        <li class="item" ng-repeat="player in vm.players">
-            {{player.name}}
-        </li>
-    </ul>
-</article>
+<ion-view view-title="Leader board">
+    <ion-content
+        <ion-list>
+            <ion-item class="item" ng-repeat="player in vm.players">
+                {{player.name}}
+            </ion-item>
+        </ion-list>
+    </ion-view>
+</ion-view>
