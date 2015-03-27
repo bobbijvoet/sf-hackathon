@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.firebase'])
 
   .run(($ionicPlatform)=> {
     $ionicPlatform.ready(function () {
@@ -68,7 +68,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             controller: 'AccountCtrl'
           }
         }
-      });
+      })
+
+        .state('firebaseTest', {
+            url: '/firebase',
+            views: {
+                'tab-account': {
+                    templateUrl: 'modules/firebase/firebase.template.html',
+                    controller: 'FirebaseController'
+                }
+            }
+        });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/dash');
