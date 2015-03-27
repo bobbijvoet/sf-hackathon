@@ -1,5 +1,7 @@
 import MapCtrl from './modules/map/MapCtrl';
 
+
+
 angular.module('starter', ['ionic'])
 
   .run(($ionicPlatform)=> {
@@ -39,7 +41,8 @@ angular.module('starter', ['ionic'])
         url: '/map',
         views: {
           'tab-map': {
-            templateUrl: 'templates/tab-map.html'
+            templateUrl: 'templates/tab-map.html',
+            controller: 'MapCtrl as vm'
           }
         }
       })
