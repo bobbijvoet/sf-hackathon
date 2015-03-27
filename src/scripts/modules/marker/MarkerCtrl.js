@@ -7,6 +7,7 @@ class MarkerCtrl {
   constructor($stateParams, FirebaseService, MapService) {
     //var marker = FirebaseService.getMarkers($stateParams.id);
     var marker = [ {
+      id: 123,
       "lat" : 55,
       "long" : 54,
       "points" : 10,
@@ -15,7 +16,7 @@ class MarkerCtrl {
       "title" : "Amsterdam"
     } ];
 
-    //this.distance = MapService.
+    this.distance = MapService.getDistance({lat: marker.lat, lng: marker.long});
     this.marker = marker[0];
 
     let inputElement = document.querySelector('[fileupload] input');
@@ -30,7 +31,7 @@ class MarkerCtrl {
 
         fileReader.onload = function(fileLoadedEvent)
         {
-          FirebaseService.checkIn(marker['$$key'], fileLoadedEvent.target.result);
+          FirebaseService.checkIn(marker.id, fileLoadedEvent.target.result);
         };
 
         fileReader.readAsDataURL(fileToLoad);
@@ -48,6 +49,6 @@ class MarkerCtrl {
   }
 }
 
-MarkerCtrl.$inject = ['$stateParams', 'FirebaseService'];
+MarkerCtrl.$inject = ['$stateParams', 'FirebaseService', 'MapService'];
 export default MarkerCtrl;
 

@@ -6,6 +6,7 @@ import MapService from './modules/map/MapService';
 import MarkerCtrl from './modules/marker/MarkerCtrl';
 import AddMarkerCtrl from './modules/map/AddMarkerCtrl';
 import UserService from './modules/firebase/UserService';
+import LoginCtrl from './modules/login/LoginCtrl';
 
 angular.module('starter', ['ionic', 'firebase'])
     .run(($ionicPlatform) => {
@@ -28,6 +29,7 @@ angular.module('starter', ['ionic', 'firebase'])
   .controller('AccountCtrl', AccountCtrl)
   .controller('MarkerCtrl', MarkerCtrl)
   .controller('AddMarkerCtrl', AddMarkerCtrl)
+  .controller('LoginCtrl', AddMarkerCtrl)
 
 
     .config(function($stateProvider, $urlRouterProvider) {
@@ -75,6 +77,15 @@ angular.module('starter', ['ionic', 'firebase'])
                     }
                 }
             })
+            .state('tab.login', {
+              url: '/login',
+              views: {
+                'tab-account': {
+                  templateUrl: 'templates/tab-login.html',
+                  controller: 'LoginCtrl as vm'
+                }
+              }
+            })
 
             .state('tab.marker', {
               url: '/marker/:id',
@@ -98,7 +109,7 @@ angular.module('starter', ['ionic', 'firebase'])
 
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/map');
+        $urlRouterProvider.otherwise('/tab/login');
 
     });
 
