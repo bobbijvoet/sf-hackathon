@@ -11,24 +11,12 @@ gulp.task('default', function () {
     gulp.start('js', 'css', 'watch');
 });
 
-gulp.task('watch', ['webserver'], function () {
-    $.livereload.listen();
+gulp.task('watch', function () {
 
-    gulp.watch('app/scss/**/*.scss', ['css']);
-    gulp.watch('app/js/**/*.js', ['js']);
-    gulp.watch('app/js/**/*.js', ['js']);
+    gulp.watch('src/scss/**/*.scss', ['css']);
 
-    gulp.src('index.html')
-        .pipe($.watch('index.html'))
-        .pipe($.livereload());
-});
-
-gulp.task('webserver', function () {
-    connect.server({
-        host: 'localhost',
-        port: 9000,
-        livereload: true
-    });
+    gulp.src('www/index.html')
+        .pipe($.watch('www/index.html'));
 });
 
 gulp.task('js', function () {
@@ -62,8 +50,7 @@ gulp.task('css', function () {
         .pipe($.size({
             showFiles: true
         }))
-        .pipe(gulp.dest('build/css'))
-        .pipe($.livereload());
+        .pipe(gulp.dest('build/css'));
 });
 
 function es6ToEs5(fileName, outputName) {
@@ -82,7 +69,5 @@ function es6ToEs5(fileName, outputName) {
         })) // loads map from browserify file
         //.pipe($.uglify())
         .pipe($.sourcemaps.write('./')) // writes .map file
-        .pipe(gulp.dest('./build'))
-        .pipe($.livereload());
-
+        .pipe(gulp.dest('./www/build'))
 }
