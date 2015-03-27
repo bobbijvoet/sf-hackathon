@@ -4,7 +4,7 @@ import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
 import MarkerCtrl from './modules/marker/MarkerCtrl';
 
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'firebase'])
     .run(($ionicPlatform) => {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
