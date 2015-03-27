@@ -1,25 +1,33 @@
 <ion-view view-title="Marker">
-    <ion-content class="marker-content">
+	<ion-content class="marker-content">
 
-        <div class="card">
-            <div class="item item-text-wrap" ng-bind-template="TITLE: {{vm.marker.title}}">
-            </div>
-        </div>
+		<div class="card">
+			<div class="item item-text-wrap" ng-bind-template="TITLE: {{vm.marker.title}}">
+			</div>
+		</div>
 
-        <div class="card">
-            <div class="item item-text-wrap" ng-bind-template="DETAILS: {{vm.marker.details}}">
-            </div>
-        </div>
+		<div class="card">
+			<div class="item item-text-wrap" ng-bind-template="DETAILS: {{vm.marker.details}}">
+			</div>
+		</div>
 
-        <div class="card">
-            <div class="item item-text-wrap" ng-bind-template="QUEST: {{vm.marker.quest}}">
-            </div>
-        </div>
+		<div class="card">
+			<div class="item item-text-wrap" ng-bind-template="QUEST: {{vm.marker.quest}}">
+			</div>
+		</div>
 
-        <button ng-show="mv.distance < 1000" fileupload class="file-upload">
-            <span>button-royal</span>
-            <input type="file" class="upload" />
-        </button>
-    </ion-content>
+		<button ng-show="mv.distance < 1000" fileupload class="file-upload">
+			<span>Upload</span>
+			<input type="file" class="upload"/>
+		</button>
+
+		<a class="button button-balanced button-block"
+						ng-href="http://maps.google.com/?saddr={{vm.dep.lat}},{{vm.dep.lng}}&daddr={{vm.dest.lat}},{{vm.dest.lng}}">
+
+			<span>Google maps</span>
+		</a>
+
+
+	</ion-content>
 </ion-view>
 

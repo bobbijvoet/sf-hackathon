@@ -42,6 +42,11 @@ class MapService {
     this.myLocation = event.latlng;
   }
 
+
+  myLocation(){
+    return this.myLocation
+  }
+
   markers() {
     var deferred = this.$q.defer();
 

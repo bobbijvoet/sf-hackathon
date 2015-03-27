@@ -9,8 +9,12 @@ class MarkerCtrl {
 
     this.marker = marker;
     this.distance = MapService.getDistance({lat: this.marker.lat, lng: this.marker.long});
+    this.dest = {lat:this.marker.lat, lng:this.marker.long};
+    this.dep = {lat:MapService.myLocation.lat, lng:MapService.myLocation.lng};
 
     let inputElement = document.querySelector('[fileupload] input');
+
+
 
     inputElement.addEventListener('change', (event) => { // https://thiscouldbebetter.wordpress.com/2013/07/03/converting-a-file-to-a-base64-dataurl-in-javascript/
       var filesSelected = inputElement.files;
