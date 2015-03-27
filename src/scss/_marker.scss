@@ -1,0 +1,24 @@
+.marker-content {
+    padding: 50px;
+
+    .file-upload {
+        overflow: hidden;
+        position: relative;
+        padding: 10px 50px;
+        border-color: #552bdf;
+        background-color: #8a6de9;
+        background-image: linear-gradient(0deg, #552bdf, #552bdf 50%, transparent 50%);
+        color: #fff;
+
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+        }
+    }
+}
