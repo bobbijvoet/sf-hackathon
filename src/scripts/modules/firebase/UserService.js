@@ -9,7 +9,7 @@ class UserService
 {
 	constructor()
 	{
-		this.id = 1; // 1 is admin, 2 is user
+		this.id = null; // 1 is admin, 2 is user
 	}
 
 	set(id)
