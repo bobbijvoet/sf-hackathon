@@ -70,15 +70,15 @@ angular.module('starter', ['ionic', 'firebase'])
                     }
                 }
             })
-      .state('tab.marker', {
-        url: '/marker',
-        views: {
-          'tab-marker': {
-            templateUrl: 'templates/marker.html',
-            controller: 'MarkerCtrl'
-          }
-        }
-      });
+            .state('tab.marker', {
+              url: '/marker/:id',
+              views: {
+                'tab-account': {
+                  templateUrl: 'templates/tab-marker.html',
+                  controller: 'MarkerCtrl as vm'
+                }
+              }
+            });
 
 
         // if none of the above states are matched, use this as the fallback
