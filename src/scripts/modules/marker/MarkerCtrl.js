@@ -4,7 +4,7 @@ function loadImageFileAsURL()
 }
 
 class MarkerCtrl {
-  constructor($stateParams, FirebaseService, MapService) {
+  constructor($stateParams, FirebaseService, MapService, $scope) {
     var marker = FirebaseService.getMarkers($stateParams.id);
 
     this.marker = marker;
@@ -26,7 +26,10 @@ class MarkerCtrl {
 
         fileReader.onload = function(fileLoadedEvent)
         {
-          FirebaseService.checkIn(marker.id, fileLoadedEvent.target.result);
+          self.images.push(fileLoadedEvent.target.result);
+          console.log($scope);
+          $scope.$digest();
+          //FirebaseService.checkIn(marker.id, fileLoadedEvent.target.result);
         };
 
         fileReader.readAsDataURL(fileToLoad);
@@ -44,6 +47,6 @@ class MarkerCtrl {
   }
 }
 
-MarkerCtrl.$inject = ['$stateParams', 'FirebaseService', 'MapService'];
+MarkerCtrl.$inject = ['$stateParams', 'FirebaseService', 'MapService', '$scope'];
 export default MarkerCtrl;
 
