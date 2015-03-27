@@ -5,6 +5,9 @@
     "ionic": "driftyco/ionic-bower#1.0.0-rc.1",
     "leaflet": "~0.7.3",
     "leaflet-geometry": "git@github.com:makinacorpus/Leaflet.GeometryUtil.git"
-
+  },
+  "dependencies": {
+    "firebase": "~2.2.3",
+    "angularfire": "~1.0.0"
   }
 }
