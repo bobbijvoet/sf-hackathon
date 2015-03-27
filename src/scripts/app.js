@@ -2,8 +2,9 @@ import MapCtrl from './modules/map/MapCtrl';
 import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
+import MarkerCtrl from './modules/marker/MarkerCtrl';
 
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'firebase'])
     .run(($ionicPlatform) => {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -21,6 +22,7 @@ angular.module('starter', ['ionic'])
   .controller('MapCtrl', MapCtrl)
   .controller('LeaderBoardCtrl', LeaderBoardCtrl)
   .controller('AccountCtrl', AccountCtrl)
+  .controller('MarkerCtrl', MarkerCtrl)
 
 
     .config(function($stateProvider, $urlRouterProvider) {
@@ -54,7 +56,7 @@ angular.module('starter', ['ionic'])
                 views: {
                   'tab-leaderboard': {
                     templateUrl: 'templates/tab-leaderboard.html',
-                    controller: 'LeaderBoardCtrl'
+                    controller: 'LeaderBoardCtrl as vm'
                   }
                 }
               })
@@ -67,7 +69,16 @@ angular.module('starter', ['ionic'])
                         controller: 'AccountCtrl'
                     }
                 }
-            });
+            })
+      .state('tab.marker', {
+        url: '/marker',
+        views: {
+          'tab-marker': {
+            templateUrl: 'templates/marker.html',
+            controller: 'MarkerCtrl'
+          }
+        }
+      });
 
 
         // if none of the above states are matched, use this as the fallback

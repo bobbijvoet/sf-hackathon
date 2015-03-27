@@ -2,15 +2,15 @@
 
 class FirebaseService
 {
-    constructor($firebaseObject, $firebaseArray)
+    constructor($firebaseArray)
     {
         let baseUrl = 'https://winningfrontmen.firebaseio.com/';
-        this.players = $firebaseArray(new Firebase(baseUrl + 'users'))
+        this.playersService = $firebaseArray(new Firebase(baseUrl + 'users'));
     }
 
     getPlayers()
     {
-        return this.players;
+        return this.playersService.$loaded();
     }
 }
 
