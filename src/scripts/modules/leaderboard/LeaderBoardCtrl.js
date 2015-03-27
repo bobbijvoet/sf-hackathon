@@ -6,11 +6,16 @@ class LeaderBoardCtrl
     constructor(FirebaseService)
     {
         this.FirebaseService = FirebaseService;
+
+        this.init();
     }
 
-    getPlayers() {
-
-        return this.FirebaseService.getPlayers();
+    init() {
+        var self = this;
+        this.FirebaseService.getPlayers().then(function(data) {
+            console.log('data: ' + data);
+            self.players = data;
+        });
     }
 
 }

@@ -56,7 +56,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 views: {
                   'tab-leaderboard': {
                     templateUrl: 'templates/tab-leaderboard.html',
-                    controller: 'LeaderBoardCtrl'
+                    controller: 'LeaderBoardCtrl as vm'
                   }
                 }
               })
