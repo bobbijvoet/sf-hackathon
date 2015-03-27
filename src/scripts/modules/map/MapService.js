@@ -4,6 +4,7 @@ class MapService {
   constructor() {
     //this.$http = $http;
 
+    //var marker = FirebaseService.getMarkers($stateParams.id);
 
     this.map = L.map('map', {
       center: [52.0306659, 5.1627295],
@@ -30,10 +31,10 @@ class MapService {
 
   }
 
-  getDistance (latLong = {lat:51.5,lng:0.09}){
+  getDistance(latLong = {lat: 51.5, lng: 0.09}) {
+     return L.latLng(latLong).distanceTo(this.myLocation);
+   }
 
-    return L.GeometryUtil.distance(this.map, this.myLocation, latLong);
-  }
 
   handleLocation (event){
     this.myLocation = event.latlng;
