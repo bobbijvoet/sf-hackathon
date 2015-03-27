@@ -3,8 +3,10 @@
 class MapService {
   constructor() {
     //this.$http = $http;
+
+
     this.map = L.map('map', {
-      center: [51.505, -0.09],
+      center: [52.0306659, 5.1627295],
       zoom: 13
     });
 
