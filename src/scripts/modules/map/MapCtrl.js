@@ -7,6 +7,7 @@ class MapCtrl {
 
     this.$state = $state;
 
+    console.log(UserService);
     this.admin = UserService.role() === 'ADMIN';
 
     MapService.markers().then((data)=> {

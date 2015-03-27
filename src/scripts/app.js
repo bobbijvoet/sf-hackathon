@@ -23,6 +23,7 @@ angular.module('starter', ['ionic', 'firebase'])
 	.controller('LoginCtrl', LoginCtrl)
 
 	.run(function($rootScope, $location, UserService) {
+      /*
 		$rootScope.$on('$locationChangeStart', function () {
 			//console.log('$locationChangeStart : ', $location.url(), UserService.get());
 			// set the startupUrl
@@ -35,6 +36,7 @@ angular.module('starter', ['ionic', 'firebase'])
 		$rootScope.$on('$locationChangeSuccess', function () {
 			//console.log('$locationChangeSuccess : ', $location.url());
 		});
+		*/
 	}, ($ionicPlatform) => {
 		$ionicPlatform.ready(function () {
 			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
