@@ -5,7 +5,7 @@ function loadImageFileAsURL()
 
 class MarkerCtrl {
   constructor($stateParams, FirebaseService, MapService) {
-    //var marker = FirebaseService.getMarkers($stateParams.id);
+    var marker = FirebaseService.getMarkers($stateParams.id);
     var marker = [ {
       id: 123,
       "lat" : 55,
