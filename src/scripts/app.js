@@ -116,4 +116,6 @@ angular.module('starter', ['ionic', 'firebase'])
     });
 
 
+
+
 //angular.module('starter').service('ExampleService', ExampleService);

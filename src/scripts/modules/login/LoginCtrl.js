@@ -6,7 +6,6 @@ class LoginCtrl {
 
     this.setPlayer = () => {
       UserService.set(2);
-      console.log(UserService.role());
     };
   }
 }
