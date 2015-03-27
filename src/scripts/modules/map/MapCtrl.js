@@ -3,16 +3,15 @@
  */
 class MapCtrl {
   constructor (){
-  }
-
-  static getMarkers (){
-
-    console.log("YES");
+    console.log('constructor');
 
   }
+
+
 
 
   showPopup(){
+    console.log("YES");
 
   }
 }
