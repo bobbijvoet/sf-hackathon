@@ -1,6 +1,9 @@
+import MapCtrl from './../map/MapCtrl';
+
+
 class AdminMapCtrl extends MapCtrl {
-  constructor() {
-    super();
+  constructor(MapService, $state) {
+    super(MapService, $state);
   }
 
   showCrosshair() {
@@ -13,3 +16,6 @@ class AdminMapCtrl extends MapCtrl {
 
 
 }
+AdminMapCtrl.$inject = ['MapService', '$state'];
+
+export default AdminMapCtrl;

@@ -1,4 +1,5 @@
 import MapCtrl from './modules/map/MapCtrl';
+import AdminMapCtrl from './modules/map/AdminMapCtrl';
 import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
@@ -24,6 +25,7 @@ angular.module('starter', ['ionic', 'firebase'])
   .service('FirebaseService', FirebaseService)
   .service('MapService', MapService)
   .controller('MapCtrl', MapCtrl)
+  .controller('AdminMapCtrl', AdminMapCtrl)
   .controller('LeaderBoardCtrl', LeaderBoardCtrl)
   .controller('AccountCtrl', AccountCtrl)
   .controller('MarkerCtrl', MarkerCtrl)
@@ -51,7 +53,7 @@ angular.module('starter', ['ionic', 'firebase'])
                 views: {
                   'tab-map': {
                     templateUrl: 'templates/tab-map.html',
-                    controller: 'MapCtrl as vm'
+                    controller: 'AdminMapCtrl as vm'
                   }
                 }
               })
@@ -84,17 +86,17 @@ angular.module('starter', ['ionic', 'firebase'])
                   controller: 'MarkerCtrl as vm'
                 }
               }
-            });
-	        //
-	        //.state('tab.addmarker', {
-		     //   url: '/addmarker',
-		     //   views: {
-			 //       'tab-account': {
-				//        templateUrl: 'templates/tab-addmarker.html',
-				//        controller: 'AddMarkerCtrl as vm'
-			 //       }
-		     //   }
-	        //});
+            })
+          .state('tab.addMarker', {
+                  url: '/addmarker',
+                  views: {
+                    'tab-account': {
+                      templateUrl: 'templates/tab-addmarker.html',
+                      controller: 'AddMarkerCtrl as vm'
+                    }
+                  }
+                });
+
 
 
         // if none of the above states are matched, use this as the fallback

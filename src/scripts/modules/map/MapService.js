@@ -4,6 +4,7 @@ class MapService {
   constructor() {
     //this.$http = $http;
 
+    //var marker = FirebaseService.getMarkers($stateParams.id);
 
     this.map = L.map('map', {
       center: [52.0306659, 5.1627295],
