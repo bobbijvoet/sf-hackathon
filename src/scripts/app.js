@@ -5,6 +5,7 @@ import FirebaseService from './modules/firebase/FirebaseService';
 import MapService from './modules/map/MapService';
 import MarkerCtrl from './modules/marker/MarkerCtrl';
 import AddMarkerCtrl from './modules/map/AddMarkerCtrl';
+import UserService from './modules/firebase/UserService';
 
 angular.module('starter', ['ionic', 'firebase'])
     .run(($ionicPlatform) => {
