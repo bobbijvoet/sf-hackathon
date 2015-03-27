@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'firebase'])
 
 	.run(function($rootScope, $location, UserService) {
 		$rootScope.$on('$locationChangeStart', function () {
-			console.log('$locationChangeStart : ', $location.url(), UserService.get());
+			//console.log('$locationChangeStart : ', $location.url(), UserService.get());
 			// set the startupUrl
 			if (!UserService.get()) {
 				if($location.url() !== '/tab/login') {
@@ -33,7 +33,7 @@ angular.module('starter', ['ionic', 'firebase'])
 			}
 		});
 		$rootScope.$on('$locationChangeSuccess', function () {
-			console.log('$locationChangeSuccess : ', $location.url());
+			//console.log('$locationChangeSuccess : ', $location.url());
 		});
 	}, ($ionicPlatform) => {
 		$ionicPlatform.ready(function () {
