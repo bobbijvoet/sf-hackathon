@@ -4,8 +4,9 @@
 class MapCtrl {
 
   constructor($state) {
+	  var houten = [52.0306659, 5.1627295];
     this.map = L.map('map', {
-      center: [51.505, -0.09],
+      center: houten,
       zoom: 13
     });
 
@@ -15,7 +16,7 @@ class MapCtrl {
       maxZoom: 18
     }).addTo(this.map);
 
-    this.marker = L.marker([51.5, -0.09], {id: 123}).addTo(this.map);
+    this.marker = L.marker(houten, {id: 123}).addTo(this.map);
 
     this.marker.on('click', (event) => {
       this.$state.go('tab.marker', {id: event.target.options.id})
