@@ -3,9 +3,8 @@ import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
 
-
 angular.module('starter', ['ionic'])
-    .run(($ionicPlatform) = > {
+    .run(($ionicPlatform) => {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -40,53 +39,25 @@ angular.module('starter', ['ionic'])
                 templateUrl: "templates/tabs.html"
             })
 
-      .state('tab.map', {
-        url: '/map',
-        views: {
-          'tab-map': {
-            templateUrl: 'templates/tab-map.html',
-            controller: 'MapCtrl as vm'
-          }
-        }
-      })
+              .state('tab.map', {
+                url: '/map',
+                views: {
+                  'tab-map': {
+                    templateUrl: 'templates/tab-map.html',
+                    controller: 'MapCtrl as vm'
+                  }
+                }
+              })
 
-      .state('tab.leaderboard', {
-        url: '/leaderboard',
-        views: {
-          'tab-chats': {
-            templateUrl: 'templates/tab-leaderboard.html',
-            controller: 'LeaderBoardCtrl'
-          }
-        }
-      })
-      .state('tab.chat-detail', {
-        url: '/chats/:chatId',
-        views: {
-          'tab-chats': {
-            templateUrl: 'templates/chat-detail.html',
-            controller: 'ChatDetailCtrl'
-          }
-        }
-      })
-
-            //.state('tab.chats', {
-            //    url: '/chats',
-            //    views: {
-            //        'tab-chats': {
-            //            templateUrl: 'templates/tab-chats.html',
-            //            controller: 'ChatsCtrl'
-            //        }
-            //    }
-            //})
-            //.state('tab.chat-detail', {
-            //    url: '/chats/:chatId',
-            //    views: {
-            //        'tab-chats': {
-            //            templateUrl: 'templates/chat-detail.html',
-            //            controller: 'ChatDetailCtrl'
-            //        }
-            //    }
-            //})
+              .state('tab.leaderboard', {
+                url: '/leaderboard',
+                views: {
+                  'tab-leaderboard': {
+                    templateUrl: 'templates/tab-leaderboard.html',
+                    controller: 'LeaderBoardCtrl'
+                  }
+                }
+              })
 
             .state('tab.account', {
                 url: '/account',
