@@ -32,6 +32,14 @@ class MapCtrl {
     this.$state.go('marker', {id:event.target.options.id})
 
   }
+
+  showCrosshair (){
+    this.crosshair = true;
+  }
+
+  openAddMarkerView (){
+    this.$state.go('marker/add')
+  }
 }
 
 MapCtrl.$inject = ['$state'];
