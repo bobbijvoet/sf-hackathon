@@ -20,6 +20,12 @@
             <span>button-royal</span>
             <input type="file" class="upload" />
         </button>
+
+        <ol>
+            <li ng-repeat="img in vm.images">
+              <img ng-src="{{img}}">
+            </li>
+        </ol>
     </ion-content>
 </ion-view>
 

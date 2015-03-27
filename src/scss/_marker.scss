@@ -21,4 +21,20 @@
             opacity: 0;
         }
     }
+
+    ol {
+        list-style-type: none;
+        margin: 20px;
+        padding: 0;
+
+        li {
+            float: left;
+        }
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+    }
 }

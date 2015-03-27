@@ -12,7 +12,6 @@ class MapService {
       zoom: 3
     });
 
-
     L.tileLayer('http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/maptile/{mapID}/normal.day.grey.mobile/{z}/{x}/{y}/256/png8?app_id={app_id}&app_code={app_code}', {
     	attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
     	subdomains: '1234',
@@ -29,12 +28,10 @@ class MapService {
     this.myLocation = {lat:0, lng:0};
     this.map.locate({maxZoom: 5});
     this.map.on('locationfound', (event) => this.handleLocation(event));
-
-
   }
 
   getDistance(latLong = {lat: 51.5, lng: 0.09}) {
-     return L.latLng(latLong).distanceTo(this.myLocation);
+     return parseInt(L.latLng(latLong).distanceTo(this.myLocation)/1000);
    }
 
 
@@ -59,7 +56,6 @@ class MapService {
   }
 
   addMarker (){
-    console.log(this.map.getCenter());
     return  this.FirebaseService.setMarker( {
           id: 123,
           "lat" : this.map.getCenter().lat,
