@@ -1,10 +1,10 @@
 <ion-view view-title="Login" name="login-view">
     <ion-content class="login-page">
-        <button player class="button button-assertive">
+        <button player ng-click="lc.setAdmin()" class="button button-assertive">
             <span class="title">PLAYER</span>
         </button>
 
-        <button admin class="button button-assertive">
+        <button admin ng-click="lc.setPlayer()" class="button button-assertive">
             <span class="title">ADMIN</span>
         </button>
 

@@ -1,12 +1,12 @@
 'use strict';
 
+const ROLE = {
+  admin: 'ADMIN',
+  player: 'PLAYER'
+};
+
 class UserService
 {
-	const ROLE = {
-		admin: 'ADMIN',
-		player: 'PLAYER'
-	};
-
 	constructor()
 	{
 		this.id = null; // 1 is admin, 2 is user
@@ -25,14 +25,8 @@ class UserService
 		return this.id;
 	}
 
-	role(id) {
-		if(id) {
-			if (id === 1) {
-				return ROLE.admin;
-			}
-			return ROLE.player;
-		}
-		return {error: 'invalid params'};
+	role() {
+    return this.id === 1 ? ROLE.admin : ROLE.player;
 	}
 }
 
