@@ -8,7 +8,7 @@ class MapCtrl {
     this.$state = $state;
 
     console.log(UserService);
-    this.admin = UserService.role() === 'ADMIN';
+    this.admin = false;//UserService.role() === 'ADMIN';
 
     MapService.markers().forEach((item)=>
         item.on('click', (event) => {
