@@ -49,85 +49,97 @@ angular.module('starter', ['ionic', 'firebase'])
 		});
 	})
 
-	.config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
 
-		// Ionic uses AngularUI Router which uses the concept of states
-		// Learn more here: https://github.com/angular-ui/ui-router
-		// Set up the various states which the app can be in.
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
 
-		// Each state's controller can be found in controllers.js
-		$stateProvider
+    // Each state's controller can be found in controllers.js
+    $stateProvider
 
-			// setup an abstract state for the tabs directive
-			.state('tab', {
-				url: "/tab",
-				abstract: true,
-				templateUrl: "templates/tabs.html"
-			})
+      // setup an abstract state for the tabs directive
+      .state('tab', {
+        url: "/tab",
+        abstract: true,
+        templateUrl: "templates/tabs.html"
+      })
 
-			.state('tab.map', {
-				url: '/map',
-				views: {
-					'tab-map': {
-						templateUrl: 'templates/tab-map.html',
-						controller: 'AdminMapCtrl as vm'
-					}
-				}
-			})
+      .state('tab.map', {
+        url: '/map',
+        views: {
+          'tab-map': {
+            templateUrl: 'templates/tab-map.html',
+            controllerProvider: function (UserService) {
+              console.log('set controller');
+              if (UserService.role() === 'ADMIN') {
+                console.log(UserService.role());
 
-			.state('tab.leaderboard', {
-				url: '/leaderboard',
-				views: {
-					'tab-leaderboard': {
-						templateUrl: 'templates/tab-leaderboard.html',
-						controller: 'LeaderBoardCtrl as vm'
-					}
-				}
-			})
+                return 'AdminMapCtrl as vm';
+              } else {
+                console.log(UserService.role());
 
-			.state('tab.account', {
-				url: '/account',
-				views: {
-					'tab-account': {
-						templateUrl: 'templates/tab-account.html',
-						controller: 'AccountCtrl'
-					}
-				}
-			})
-			.state('tab.login', {
-				url: '/login',
-				views: {
-					'tab-account': {
-						templateUrl: 'templates/tab-login.html',
-						controller: 'LoginCtrl as lc'
-					}
-				}
-			})
+                return 'MapCtrl as vm';
+              }
 
-			.state('tab.marker', {
-				url: '/marker/:id',
-				views: {
-					'tab-account': {
-						templateUrl: 'templates/tab-marker.html',
-						controller: 'MarkerCtrl as vm'
-					}
-				}
-			})
-			.state('tab.addMarker', {
-				url: '/addmarker',
-				views: {
-					'tab-account': {
-						templateUrl: 'templates/tab-addmarker.html',
-						controller: 'AddMarkerCtrl as vm'
-					}
-				}
-			});
+            }
+          }
+        }
+      })
+
+      .state('tab.leaderboard', {
+        url: '/leaderboard',
+        views: {
+          'tab-leaderboard': {
+            templateUrl: 'templates/tab-leaderboard.html',
+            controller: 'LeaderBoardCtrl as vm'
+          }
+        }
+      })
+
+      .state('tab.account', {
+        url: '/account',
+        views: {
+          'tab-account': {
+            templateUrl: 'templates/tab-account.html',
+            controller: 'AccountCtrl'
+          }
+        }
+      })
+      .state('tab.login', {
+        url: '/login',
+        views: {
+          'tab-account': {
+            templateUrl: 'templates/tab-login.html',
+            controller: 'LoginCtrl as lc'
+          }
+        }
+      })
+
+      .state('tab.marker', {
+        url: '/marker/:id',
+        views: {
+          'tab-account': {
+            templateUrl: 'templates/tab-marker.html',
+            controller: 'MarkerCtrl as vm'
+          }
+        }
+      })
+      .state('tab.addMarker', {
+        url: '/addmarker',
+        views: {
+          'tab-account': {
+            templateUrl: 'templates/tab-addmarker.html',
+            controller: 'AddMarkerCtrl as vm'
+          }
+        }
+      });
 
 
-		// if none of the above states are matched, use this as the fallback
-		$urlRouterProvider.otherwise('/tab/login');
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/tab/login');
 
-	});
+  });
 
 
 //angular.module('starter').service('ExampleService', ExampleService);

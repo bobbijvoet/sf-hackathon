@@ -1,8 +1,8 @@
 'use strict';
 
 class MapService {
-  constructor() {
-    //this.$http = $http;
+  constructor(FirebaseService) {
+    this.FirebaseService = FirebaseService;
 
     //var marker = FirebaseService.getMarkers($stateParams.id);
 
@@ -43,8 +43,14 @@ class MapService {
   markers() {
     return [this.marker];
   }
+
+  addMarker (){
+    this.FirebaseService.setMarker();
+        //var marker = FirebaseService.getMarkers($stateParams.id);
+
+  }
 }
 
-//MapService.$inject = ['$http'];
+MapService.$inject = ['FirebaseService'];
 
 export default MapService;
