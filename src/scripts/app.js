@@ -3,16 +3,16 @@ import AdminMapCtrl from './modules/map/AdminMapCtrl';
 import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
-import MapService from './modules/map/MapService';
 import MarkerCtrl from './modules/marker/MarkerCtrl';
 import AddMarkerCtrl from './modules/marker/AddMarkerCtrl';
 import UserService from './modules/firebase/UserService';
 import LoginCtrl from './modules/login/LoginCtrl';
+import MapService from './modules/map/MapService';
 
 angular.module('starter', ['ionic', 'firebase'])
 
+	.service('LeafletMapDirectiveCtrl', MapService)
 	.service('FirebaseService', FirebaseService)
-	.service('MapService', MapService)
 	.service('UserService', UserService)
 	.controller('MapCtrl', MapCtrl)
 	.controller('AdminMapCtrl', AdminMapCtrl)
@@ -84,6 +84,11 @@ angular.module('starter', ['ionic', 'firebase'])
                 return 'MapCtrl as vm';
               }
 
+            },
+            resolve:{
+              bla:function(){
+                return 123;
+              }
             }
           }
         }
@@ -145,3 +150,5 @@ angular.module('starter', ['ionic', 'firebase'])
 
 
 //angular.module('starter').service('ExampleService', ExampleService);
+
+import Map from './modules/map/LeafletMapDirective';

@@ -23,7 +23,7 @@ class MapService {
 
     this.myLocation = {lat: 0, lng: 0};
     this.map.locate({maxZoom: 5});
-    this.map.on('locationfound', (event) => this.handleLocation(event));
+    this.map.on('locationfound', (event) => this.setPlayerLocation(event));
   }
 
   getDistance(latLong = {lat: 51.5, lng: 0.09}) {
@@ -31,7 +31,7 @@ class MapService {
   }
 
 
-  handleLocation(event) {
+  setPlayerLocation(event) {
     this.myLocation = event.latlng;
   }
 
@@ -41,6 +41,7 @@ class MapService {
   }
 
   markers() {
+    console.log('markers!')
     return this.FirebaseService.getMarkers().then((data)=> {
       let deferred = this.$q.defer();
 

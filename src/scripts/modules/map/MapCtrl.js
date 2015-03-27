@@ -3,13 +3,14 @@
  */
 class MapCtrl {
 
-  constructor(MapService, UserService, $state) {
+  constructor(MapService, UserService, $state, bla) {
 
     this.$state = $state;
 
+    console.log(bla, 'Resolving works!');
     this.admin = UserService.role() === 'ADMIN';
 
-    console.log(this.admin);
+    console.log('heeeyooo');
 
     MapService.markers().then((data)=> {
       data.forEach((item)=> {
@@ -21,6 +22,6 @@ class MapCtrl {
   }
 }
 
-MapCtrl.$inject = ['MapService', 'UserService', '$state'];
+MapCtrl.$inject = ['LeafletMapDirectiveCtrl', 'UserService', '$state', 'bla'];
 
 export default MapCtrl;

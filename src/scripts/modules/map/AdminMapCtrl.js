@@ -17,6 +17,6 @@ class AdminMapCtrl extends MapCtrl {
 
 
 }
-AdminMapCtrl.$inject = ['MapService', 'UserService','$state'];
+AdminMapCtrl.$inject = ['LeafletMapDirectiveCtrl', 'UserService','$state'];
 
 export default AdminMapCtrl;

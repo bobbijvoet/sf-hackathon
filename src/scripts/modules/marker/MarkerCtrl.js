@@ -44,6 +44,6 @@ class MarkerCtrl {
   }
 }
 
-MarkerCtrl.$inject = ['$stateParams', 'FirebaseService', 'MapService', '$scope'];
+MarkerCtrl.$inject = ['$stateParams', 'FirebaseService', 'LeafletMapDirectiveCtrl', '$scope'];
 export default MarkerCtrl;
 

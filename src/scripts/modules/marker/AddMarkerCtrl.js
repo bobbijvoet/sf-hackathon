@@ -22,7 +22,7 @@ class AddMarkerCtrl {
   }
 }
 
-AddMarkerCtrl.$inject = ['MapService', '$state'];
+AddMarkerCtrl.$inject = ['LeafletMapDirectiveCtrl', '$state'];
 
 
 export default AddMarkerCtrl;

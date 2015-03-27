@@ -1,7 +1,7 @@
 'use strict';
 
 class FirebaseService {
-  constructor($firebaseArray, UserService) {
+  constructor($firebaseArray) {
     let baseUrl = 'https://winningfrontmen.firebaseio.com/';
     this.playersService = $firebaseArray(new Firebase(baseUrl + 'users'));
     this.markersService = $firebaseArray(new Firebase(baseUrl + 'markers'));
@@ -54,8 +54,12 @@ class FirebaseService {
     }
     return {error: 'no data'};
   }
+
+  static instance($firebaseArray) {
+    return new FirebaseService($firebaseArray);
+  }
 }
 
-FirebaseService.$inject = ['$firebaseArray', 'UserService'];
+FirebaseService.$inject = ['$firebaseArray'];
 
 export default FirebaseService;
