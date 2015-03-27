@@ -8,11 +8,17 @@ class Map {
 
   getMarkers (){
 
-  }
-
-  checkIn(){
 
   }
+
+
+  showPopup(){
+
+  }
+
+
+
+
 
 
 

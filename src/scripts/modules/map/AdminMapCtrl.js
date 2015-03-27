@@ -1,0 +1,16 @@
+class AdminMapCtrl {
+  constructor (){
+
+  }
+
+
+
+  addMarker(){
+
+  }
+
+  
+
+
+
+}
