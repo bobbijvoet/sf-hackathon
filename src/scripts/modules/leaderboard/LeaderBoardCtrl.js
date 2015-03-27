@@ -13,7 +13,6 @@ class LeaderBoardCtrl
     init() {
         var self = this;
         this.FirebaseService.getPlayers().then(function(data) {
-            console.log('data: ' + data);
             self.players = data;
         });
     }
