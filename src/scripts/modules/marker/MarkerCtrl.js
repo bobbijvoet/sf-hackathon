@@ -1,12 +1,23 @@
-/**
- * Created by bob on 27-3-15.
- */
 class MarkerCtrl {
-  controller($routeParams) {
-    console.log('x');
+  constructor($stateParams) {
+    this.name = '';
+    this.details = '';
+    this.latLng = '';
+    console.log("XXXXXX");
     debugger;
+
+  }
+
+
+  getDetails(){
+
+  }
+
+  checkIn() {
+
   }
 }
 
-MarkerCtrl.$inject = ['$routeParams'];
+MarkerCtrl.$inject = ['$stateParams'];
 export default MarkerCtrl;
+
