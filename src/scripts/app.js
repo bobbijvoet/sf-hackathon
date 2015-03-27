@@ -2,6 +2,7 @@ import MapCtrl from './modules/map/MapCtrl';
 import LeaderBoardCtrl from './modules/leaderboard/LeaderBoardCtrl';
 import AccountCtrl from './modules/account/AccountCtrl';
 import FirebaseService from './modules/firebase/FirebaseService';
+import MapService from './modules/map/MapService';
 import MarkerCtrl from './modules/marker/MarkerCtrl';
 import AddMarkerCtrl from './modules/map/AddMarkerCtrl';
 
@@ -20,6 +21,7 @@ angular.module('starter', ['ionic', 'firebase'])
     });
   })
   .service('FirebaseService', FirebaseService)
+  .service('MapService', MapService)
   .controller('MapCtrl', MapCtrl)
   .controller('LeaderBoardCtrl', LeaderBoardCtrl)
   .controller('AccountCtrl', AccountCtrl)

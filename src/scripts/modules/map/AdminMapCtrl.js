@@ -1,16 +1,15 @@
-class AdminMapCtrl {
-  constructor (){
-
+class AdminMapCtrl extends MapCtrl {
+  constructor() {
+    super();
   }
 
-
-
-  addMarker(){
-
+  showCrosshair() {
+    this.crosshair = true;
   }
 
-  
-
+  openAddMarkerView() {
+    this.$state.go('marker/add')
+  }
 
 
 }

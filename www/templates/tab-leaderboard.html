@@ -2,8 +2,8 @@
     <ion-content
         <ion-list>
             <ion-item class="item" ng-repeat="player in vm.players">
-                <span>{{player.name}}</span>
-                <span>{{player.points}}</span>
+                {{player.name}}
+                <span class="badge badge-assertive">{{player.points}}</span>
             </ion-item>
         </ion-list>
     </ion-view>
