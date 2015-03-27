@@ -10,7 +10,7 @@ class FirebaseService
 		this.checkinService = $firebaseArray(new Firebase(baseUrl + 'checkin'));
 	}
 
-	getPlayers()
+	getPlayers(id)
 	{
 		if(id) {
 			return this.playersService.$getRecord(id);
