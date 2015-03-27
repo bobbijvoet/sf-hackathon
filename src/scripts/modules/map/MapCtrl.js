@@ -17,7 +17,7 @@ class MapCtrl {
 
     this.marker = L.marker([51.5, -0.09], {id: 123}).addTo(this.map);
 
-    this.marker.on('click', (event) => this.$state.go('marker', {id:event.target.options.id}));
+    this.marker.on('click', (event) => this.$state.go('tab.marker', {id:event.target.options.id}));
 
   }
 

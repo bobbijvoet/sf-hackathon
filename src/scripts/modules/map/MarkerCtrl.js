@@ -1,9 +1,10 @@
 class MarkerCtrl {
-  constructor() {
+  constructor($stateParams) {
     this.name = '';
     this.details = '';
     this.latLng = '';
 
+    debugger;
   }
 
 
@@ -14,6 +15,6 @@ class MarkerCtrl {
   checkIn() {
 
   }
-
-
 }
+
+MarkerCtrl.$inject = ['$stateParams'];
